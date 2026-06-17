@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 学生管理系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>学生管理系统</h2>
+                <p>请登录您的账号</p>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="用户名" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="密码" required>
+                </div>
+                <button type="submit" class="btn-login">登 录</button>
+            </form>
+            <p id="loginMsg" class="error-msg"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const msgDiv = document.getElementById('loginMsg');
+
+            if (!username || !password) {
+                msgDiv.textContent = '请输入用户名和密码';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                if (data.code === 200) {
+                    localStorage.setItem('token', data.data.token);
+                    localStorage.setItem('userInfo', JSON.stringify(data.data.user_info));
+                    window.location.href = '/';
+                } else {
+                    msgDiv.textContent = data.msg;
+                }
+            } catch (err) {
+                msgDiv.textContent = '网络错误，请稍后重试';
+            }
+        });
+    </script>
+</body>
+</html>

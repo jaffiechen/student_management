@@ -1,0 +1,168 @@
+### 1. 登录（验证 token 是否有效，可跳过）
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+### ==================== 用户管理 ====================
+### 2. 查询用户列表
+GET http://localhost:5000/api/user/list?page=1&page_size=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### 3. 添加用户（教师）
+POST http://localhost:5000/api/user/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "username": "teacher_wang",
+    "password": "123456",
+    "real_name": "王老师",
+    "role_type": 2,
+    "phone": "13812345678",
+    "status": 1
+}
+
+### 4. 更新用户（修改电话）
+PUT http://localhost:5000/api/user/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "id": 2,
+    "phone": "13900001111"
+}
+
+### 5. 删除用户（谨慎，ID请根据实际修改）
+DELETE http://localhost:5000/api/user/delete/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### ==================== 班级管理 ====================
+### 6. 查询班级列表
+GET http://localhost:5000/api/class/list
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### 7. 添加班级
+POST http://localhost:5000/api/class/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "class_name": "软件工程1班",
+    "class_code": "SE2024",
+    "teacher_id": 1
+}
+
+### 8. 更新班级（修改班主任）
+PUT http://localhost:5000/api/class/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "id": 1,
+    "teacher_id": 2
+}
+
+### 9. 删除班级
+DELETE http://localhost:5000/api/class/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### ==================== 学生管理 ====================
+### 10. 查询学生列表
+GET http://localhost:5000/api/student/list?page=1&page_size=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### 11. 添加学生
+POST http://localhost:5000/api/student/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "student_no": "20240001",
+    "name": "李小明",
+    "gender": 1,
+    "age": 20,
+    "phone": "15912345678",
+    "class_id": 1,
+    "username": "lixm"
+}
+
+### 12. 更新学生信息
+PUT http://localhost:5000/api/student/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "id": 1,
+    "name": "李小军",
+    "phone": "15811112222"
+}
+
+### 13. 删除学生
+DELETE http://localhost:5000/api/student/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### ==================== 成绩管理 ====================
+### 14. 添加成绩（需要 student_id 实际存在）
+POST http://localhost:5000/api/score/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "student_id": 1,
+    "subject": "高等数学",
+    "score": 85,
+    "semester": "2024-2025-1"
+}
+
+### 15. 查询成绩列表
+GET http://localhost:5000/api/score/list?page=1&page_size=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### 16. 更新成绩
+PUT http://localhost:5000/api/score/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "id": 1,
+    "score": 92
+}
+
+### 17. 删除成绩
+DELETE http://localhost:5000/api/score/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### ==================== 公告管理 ====================
+### 18. 发布公告
+POST http://localhost:5000/api/notice/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "title": "关于期末考试的通知",
+    "content": "考试时间：第18周，请做好准备。",
+    "is_top": 1
+}
+
+### 19. 查询公告列表
+GET http://localhost:5000/api/notice/list?page=1&page_size=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+### 20. 更新公告
+PUT http://localhost:5000/api/notice/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
+
+{
+    "id": 1,
+    "title": "【重要】期末考试安排",
+    "is_top": 1
+}
+
+### 21. 删除公告
+DELETE http://localhost:5000/api/notice/delete/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV90eXBlIjoxLCJleHAiOjE3ODE0ODI1OTJ9.-kC6aNnK2Vj9SAu9JMycvfj-NHt5hPeJw9a3mrh2RH0
